@@ -158,29 +158,6 @@ for A in [1, 2, 3]
                 feas_100 = feass[3]
             )
             append!(df, row)
-            # dict["nn"] = (x = x_nn, t = t, percentiles = percentiles, averageValue = averageValue, maximumValue = maximumValue, sumx = sumx, feass = feass)
-
-            # # Convert the dict to a DataFrame
-            # df = DataFrame()
-
-            # for (key, value) in dict
-            #     println("Key: ", key)
-            #     println("Value: ", value)
-            #     row = DataFrame(
-            #         method = key,
-            #         # x = value.x,
-            #         t = value.t,
-            #         percentile_50 = value.percentiles[1],
-            #         percentile_90 = value.percentiles[2],
-            #         averageValue = value.averageValue,
-            #         maximumValue = value.maximumValue,
-            #         sumx = value.sumx,
-            #         feas_90 = value.feass[1],
-            #         feas_95 = value.feass[2],
-            #         feas_100 = value.feass[3]
-            #     )
-            #     append!(df, row)
-            # end
 
             # Write the DataFrame to the Excel sheet
             XLSX.writetable!(sheet, collect(DataFrames.eachcol(df)), DataFrames.names(df), anchor_cell=XLSX.CellRef("A" * string(row_number)))
